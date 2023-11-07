@@ -6,6 +6,7 @@ const User = require("../models/User");
 
 exports.auth = async (req, res, next) => {
   try {
+    console.log('middleware auth is executed..')
     const token =
       req.body.token ||
       req.cookies.token ||
@@ -21,7 +22,7 @@ exports.auth = async (req, res, next) => {
 
     try {
       const decode = jwt.verify(token, process.env.JWT_SECRET);
-      console.log(decode);
+      console.log('printing decode -> ',decode);
       req.user = decode;
     } catch (error) {
       return res.status(400).json({
@@ -29,7 +30,7 @@ exports.auth = async (req, res, next) => {
         message: "Invalid token",
       });
     }
-
+    console.log('before auth next comes here..');
     next();
   } catch (error) {
     console.log(error);
@@ -44,12 +45,14 @@ exports.auth = async (req, res, next) => {
 
 exports.isStudent = async (req, res, next) => {
   try {
+    console.log('middleware isStudent executed..')
     if (req.user.accountType !== "Student") {
       return res.status(400).json({
         success: false,
         message: "You are not a student !",
       });
     }
+    console.log('here isStudent is before next')
     next(); // next middleware
   } catch (error) {
     console.log(error);
@@ -63,6 +66,8 @@ exports.isStudent = async (req, res, next) => {
 
 exports.isInstructor = async (req, res, next) => {
   try {
+  console.log('middleware isInstructor executed..')
+
     if (req.user.accountType !== "Instructor") {
       return res.status(400).json({
         success: false,
@@ -82,6 +87,7 @@ exports.isInstructor = async (req, res, next) => {
 // isAdmin
 exports.isAdmin = async (req, res, next) => {
   try {
+    console.log('middleware isAdmin executed..')
     console.log(req.user.accountType);
     if (req.user.accountType !== "Admin") {
       return res.status(400).json({

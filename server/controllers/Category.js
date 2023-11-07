@@ -2,7 +2,9 @@ const Category = require("../models/Category");
 
 exports.createCategory = async (req, res) => {
   try {
+    console.log('finally createCategory executed..');
     const { name, description } = req.body;
+    
     if (!name || !description) {
       return res.status(400).json({
         success: false,
@@ -15,6 +17,8 @@ exports.createCategory = async (req, res) => {
       name: name,
       description: description,
     });
+
+    console.log('tagDetails -> :',tagDetails);
 
     return res.status(200).json({
       success: true,

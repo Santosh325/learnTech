@@ -91,7 +91,7 @@ exports.deleteSection = async (req, res) => {
     // delete section using section id
 
     await Section.findByIdAndDelete(sectionId);
-    // await Course.findByIdAndUpdate(courseId);
+    await Course.findByIdAndUpdate(courseId);
     // return response
     return res.status(200).json({
       success: true,

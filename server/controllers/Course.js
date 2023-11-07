@@ -10,7 +10,7 @@ exports.createCourse = async (req, res) => {
     const userId = req.user.id;
 
     // fetch Data
-    const {
+    let {
       courseName,
       courseDescription,
       whatYouWillLearn,
@@ -22,7 +22,7 @@ exports.createCourse = async (req, res) => {
     } = req.body;
 
     //   fetch thumbnail
-    const thumbnail = req.files.thumbnailImage;
+    let thumbnail = req.files.thumbnailImage;
 
     // validation
     if (
@@ -59,6 +59,7 @@ exports.createCourse = async (req, res) => {
     }
     // check given tag is valid or not
     const categoryDetails = await Category.findById(category);
+    console.log('categoryDetails ->', categoryDetails);
     if (!categoryDetails) {
       return res.status(400).json({
         success: false,
@@ -144,6 +145,7 @@ exports.getCourseDetails = async (req, res) => {
 
     // find course Details
     const courseDetails = await Course.find({ _id: courseId })
+      
       .populate({
         path: "instructor",
         populate: {
@@ -151,6 +153,7 @@ exports.getCourseDetails = async (req, res) => {
         },
       })
       .populate("category")
+      
       // .populate("ratingAndReviews")
       .populate({ path: "courseContent", populate: { path: "subSection" } })
       .exec();
