@@ -22,7 +22,7 @@ exports.createRating = async (req, res) => {
       return res.status(400).json({
         success: false,
         message: "User is not enrolled in this course",
-        error: error.message,
+        
       });
     }
 
@@ -36,7 +36,7 @@ exports.createRating = async (req, res) => {
       return res.status(400).json({
         success: false,
         message: "User already reviewed the course",
-        error: error.message,
+      
       });
     }
     // create Rating and review
