@@ -47,6 +47,8 @@ const subLinks = [
     const matchRoute = (route) => {
         return matchPath({path:route},location.pathname)
     }
+    console.log("i am navbar page");
+    console.log(token);
    
    return (
      <div className='flex h-14 text-center justify-between border-b-[1px] border-b-richblack-700'>
@@ -115,7 +117,9 @@ const subLinks = [
                 </Link>
                )
             }
+            
             {
+             
               token === null &&  (
                 <Link to="/login">
                  <button className='border border-richblack-700 text-richblack-100 bg-richblack-800 px-[12px] py-[12px] rounded-md'>
@@ -125,15 +129,19 @@ const subLinks = [
               )
             }
             {
-              token === null && (<Link to="/signup">
+              token === null &&
+               (
+               <Link to="/signup">
               <button  className='border border-richblack-700 text-richblack-100 bg-richblack-800 px-[12px] py-[12px] rounded-md'>
                 Sign Up
               </button>
-              </Link>)
+              </Link>
+              )
             }
             {
               token !== null && <ProfileDropDown/>
             }
+            
          </div>
         </div>
      </div>

@@ -54,7 +54,7 @@ function UpdatePassword() {
                     value={password}
                     onChange={handleOnChange}
                     placeholder='Enter password'
-                    className='text-black'
+                    className=' w-full p-6 bg-richblack-600 text-richblack-5'
                     />
                     <span onClick={() => setShowPassword((prev) => !prev)}>
                       {
