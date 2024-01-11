@@ -11,7 +11,7 @@ function Qoute() {
             expertise
         </span>
         ,  and community to create an
-        <span className=' text-brown-200'>
+        <span className=' text-brown-500'>
             {" "}
             unparalleled educational experience
         </span>

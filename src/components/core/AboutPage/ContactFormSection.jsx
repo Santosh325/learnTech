@@ -1,11 +1,11 @@
 import React from 'react'
-import ContactUsForm from '../../contactPage/ContactUsForm'
+import ContactUsForm  from '../../contactPage/ContactUsForm'
 function ContactFormSection() {
   return (
     <div className='mx-auto'>
-     <h1>Get In Touch</h1>
-     <p>We'd love to here for you, Please fill out this form.</p>
-     <div>
+     <h1 className='text-center text-4xl font-semibold'>Get In Touch</h1>
+     <p className='text-center text-richblack-300 mt-3'>We&apos; love to here for you, Please fill out this form.</p>
+     <div className='mt-12 mx-auto'>
         <ContactUsForm/>
      </div>
     </div>
