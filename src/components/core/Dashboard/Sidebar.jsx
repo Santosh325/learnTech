@@ -26,11 +26,12 @@ function Sidebar() {
 
   return (
     <div>
-      <div className='flex min-w-[222px] flex-col border-r-[1px] border-r-richblack-700 h-[calc(100vh-3.5rem)] bg-richblack-800 py-10'>
-        <div className='flex flex-col'>
+      <div className='flex min-w-[222px] flex-col border-r-[1px] border-r-richblack-700 
+      h-[calc(100vh-3.5rem)]   py-10'>
+        <div className='flex flex-col text-white'>
            {
             sidebarLinks.map((link,index) => {
-               if(link.type && user?.type !== link.type) return null;
+               if(link.type && user?.accountType !== link.type) return null;
                return (
                 <SidebarLink link={link} iconName={link.icon} key={link.id}/>
                )
@@ -38,13 +39,13 @@ function Sidebar() {
            }
         </div>
         <div className='mx-auto mt-6 mb-6 h-[1px] w-10/12 bg-richblack-600'></div>
-        <div className='flex flex-col'>
+        <div className='flex flex-col text-white'>
           <SidebarLink 
           link={{name: "Settings", path: "dashboard/settings"}}
           iconName="VscSettingsGear"
           />
           <button
-          onClick={ () => ({
+          onClick={ () => setConfirmationModal({
             text1: "Are you Sure? ",
             text2: "You will be Logged out of your Account? ",
             btn1Text: "Logout",
@@ -52,10 +53,10 @@ function Sidebar() {
             btn1Handler: () => dispatch(logout(navigate)),
             btn2Handler: () => setConfirmationModal(null),
           })}
-          className='text-sm font-medium text-richblack-300'
+          className='text-sm font-medium  text-black-300'
           >
             <div className='flex items-center gap-x-2'>
-              <VscSignOut className='text-lg' />
+              <VscSignOut className='text-lg' /> <span>Logout</span>
             </div>
           </button>
         </div>

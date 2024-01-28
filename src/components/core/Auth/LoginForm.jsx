@@ -42,7 +42,7 @@ function LoginForm() {
           required
           type="text"
           name="email"
-          value={email}
+          alue={email}v
           onChange={handleOnChange}
           placeholder="Enter email address"
           style={{

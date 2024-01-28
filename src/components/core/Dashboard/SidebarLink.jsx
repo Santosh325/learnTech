@@ -1,7 +1,7 @@
 import React from 'react'
 import * as Icons from 'react-icons/vsc';
 import { useDispatch } from 'react-redux';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, matchPath, useLocation } from 'react-router-dom';
 function SidebarLink({link, iconName}) {
     const Icon = Icons[iconName];
     const location = useLocation();
@@ -9,7 +9,7 @@ function SidebarLink({link, iconName}) {
     
 
     const matchRoute = (route) => {
-        return matchRoute({path: route}, location.pathname);
+        return matchPath({path: route}, location.pathname);
     }
 
   return (
